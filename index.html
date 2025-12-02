@@ -5,12 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ASDP Dashboard | Laporan Kontrak Laut 2025</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="script.js" defer></script>
   <link rel="icon" href="ASDP_logo_2023.svg.png" />
+  <style>
+    /* Fade Animations (inline for safety on GitHub Pages cache) */
+    .fade {
+      transition: opacity 0.6s ease-in-out;
+      opacity: 1;
+    }
+    .fade.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
 </head>
 
 <body>
-  <!-- HEADER -->
+  <!-- ===== HEADER ===== -->
   <nav class="header-gradient">
     <div class="max-w-7xl mx-auto px-6 py-3 flex items-center space-x-4 md:space-x-6">
       <div class="logo-box">
@@ -27,124 +37,132 @@
     </div>
   </nav>
 
-  <!-- MAIN MENU -->
-  <main id="main-menu" class="flex justify-center items-center min-h-[70vh] fade-in">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
-      <div class="cursor-pointer px-12 py-10 text-white rounded-lg transition-all hover:scale-105" onclick="showForm('baru')">
-        <h2 class="text-2xl font-bold mb-2">PERJANJIAN KARYAWAN LAUT BARU</h2>
-        <p>Klik di sini untuk mengisi form perjanjian baru.</p>
-      </div>
+  <!-- ===== MAIN MENU ===== -->
+  <main id="main-menu" class="fade">
+    <div class="flex justify-center items-center min-h-[70vh]">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+        <!-- CARD 1 -->
+        <div
+          class="cursor-pointer px-12 py-10 text-white rounded-lg transition-all hover:scale-105"
+          onclick="showForm('baru')"
+        >
+          <h2 class="text-2xl font-bold mb-2">PERJANJIAN KARYAWAN LAUT BARU</h2>
+          <p>Klik di sini untuk mengisi form perjanjian baru.</p>
+        </div>
 
-      <div class="cursor-pointer px-12 py-10 text-white rounded-lg transition-all hover:scale-105" onclick="showForm('addendum')">
-        <h2 class="text-2xl font-bold mb-2">PERPANJANGAN / ADDENDUM</h2>
-        <p>Klik di sini untuk mengisi form perpanjangan atau addendum.</p>
+        <!-- CARD 2 -->
+        <div
+          class="cursor-pointer px-12 py-10 text-white rounded-lg transition-all hover:scale-105"
+          onclick="showForm('addendum')"
+        >
+          <h2 class="text-2xl font-bold mb-2">PERPANJANGAN / ADDENDUM</h2>
+          <p>Klik di sini untuk mengisi form perpanjangan atau addendum.</p>
+        </div>
       </div>
     </div>
   </main>
 
-  <!-- FORM BARU -->
-  <section id="form-baru" class="hidden opacity-0 transition-opacity duration-700 ease-in-out">
+  <!-- ===== FORM: PERJANJIAN BARU ===== -->
+  <section id="form-baru" class="hidden fade">
     <div class="max-w-4xl mx-auto p-6">
       <h2>Form Perjanjian Karyawan Laut Baru</h2>
       <form id="formPerjanjianBaru" onsubmit="handleSubmit(event, 'baru')">
         <div class="mb-4">
-          <label>NIK</label>
-          <input type="text" name="nik" class="input-field" required />
+          <label for="nik">NIK</label>
+          <input type="text" id="nik" name="nik" class="input-field" required />
         </div>
         <div class="mb-4">
-          <label>Nama Lengkap</label>
-          <input type="text" name="nama" class="input-field" required />
+          <label for="nama">Nama Lengkap</label>
+          <input type="text" id="nama" name="nama" class="input-field" required />
         </div>
         <div class="mb-4">
-          <label>Upload Dokumen Kontrak</label>
-          <input type="file" name="file" class="file-input" required />
+          <label for="file">Upload Dokumen Kontrak</label>
+          <input type="file" id="file" name="file" class="file-input" required />
         </div>
-        <button type="submit" class="bg-green-600 hover:bg-green-700 text-white py-2 px-6 rounded-lg">
-          Kirim
-        </button>
-        <button type="button" onclick="backToMenu()" class="ml-3 bg-gray-300 hover:bg-gray-400 py-2 px-6 rounded-lg">
-          Kembali
-        </button>
+        <div class="mt-6 flex gap-3">
+          <button type="submit" class="bg-green-600 hover:bg-green-700 text-white py-2 px-6 rounded-lg">
+            Kirim
+          </button>
+          <button type="button" onclick="backToMenu()" class="bg-gray-300 hover:bg-gray-400 py-2 px-6 rounded-lg">
+            Kembali
+          </button>
+        </div>
       </form>
     </div>
   </section>
 
-  <!-- FORM ADDENDUM -->
-  <section id="form-addendum" class="hidden opacity-0 transition-opacity duration-700 ease-in-out">
+  <!-- ===== FORM: ADDENDUM ===== -->
+  <section id="form-addendum" class="hidden fade">
     <div class="max-w-4xl mx-auto p-6">
       <h2>Form Perpanjangan / Addendum</h2>
       <form id="formAddendum" onsubmit="handleSubmit(event, 'addendum')">
         <div class="mb-4">
-          <label>NIK</label>
-          <input type="text" name="nik" class="input-field" required />
+          <label for="nik-add">NIK</label>
+          <input type="text" id="nik-add" name="nik" class="input-field" required />
         </div>
         <div class="mb-4">
-          <label>Nama Lengkap</label>
-          <input type="text" name="nama" class="input-field" required />
+          <label for="nama-add">Nama Lengkap</label>
+          <input type="text" id="nama-add" name="nama" class="input-field" required />
         </div>
         <div class="mb-4">
-          <label>Upload Dokumen Addendum</label>
-          <input type="file" name="file" class="file-input" required />
+          <label for="file-add">Upload Dokumen Addendum</label>
+          <input type="file" id="file-add" name="file" class="file-input" required />
         </div>
-        <button type="submit" class="bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-6 rounded-lg">
-          Kirim
-        </button>
-        <button type="button" onclick="backToMenu()" class="ml-3 bg-gray-300 hover:bg-gray-400 py-2 px-6 rounded-lg">
-          Kembali
-        </button>
+        <div class="mt-6 flex gap-3">
+          <button type="submit" class="bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-6 rounded-lg">
+            Kirim
+          </button>
+          <button type="button" onclick="backToMenu()" class="bg-gray-300 hover:bg-gray-400 py-2 px-6 rounded-lg">
+            Kembali
+          </button>
+        </div>
       </form>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- ===== FOOTER ===== -->
   <footer>
-    © 2025 PT ASDP Indonesia Ferry (Persero) — Laporan Kontrak Laut System v3.2
+    © 2025 PT ASDP Indonesia Ferry (Persero) — Laporan Kontrak Laut System v3.3
   </footer>
 
-  <!-- Inline Script for Transition -->
+  <!-- ===== SCRIPT ===== -->
   <script>
-    // Fade Form Transitions
     const menu = document.getElementById("main-menu");
     const formBaru = document.getElementById("form-baru");
     const formAdd = document.getElementById("form-addendum");
 
     function showForm(type) {
-      menu.classList.add("hidden");
-
-      if (type === "baru") {
-        formAdd.classList.add("hidden");
-        fadeIn(formBaru);
-      } else {
-        formBaru.classList.add("hidden");
-        fadeIn(formAdd);
-      }
+      fadeOut(menu);
+      setTimeout(() => {
+        if (type === "baru") {
+          formAdd.classList.add("hidden");
+          fadeIn(formBaru);
+        } else {
+          formBaru.classList.add("hidden");
+          fadeIn(formAdd);
+        }
+      }, 500);
     }
 
     function backToMenu() {
       fadeOut(formBaru);
       fadeOut(formAdd);
-      setTimeout(() => {
-        menu.classList.remove("hidden");
-        menu.classList.add("fade-in");
-      }, 500);
+      setTimeout(() => fadeIn(menu), 500);
     }
 
-    function fadeIn(element) {
-      element.classList.remove("hidden");
-      setTimeout(() => element.classList.add("opacity-100"), 10);
-      element.style.transition = "opacity 0.6s ease-in-out";
-      element.style.opacity = 1;
+    function fadeIn(el) {
+      el.classList.remove("hidden");
+      setTimeout(() => el.classList.remove("hidden"), 10);
+      el.classList.add("fade");
     }
 
-    function fadeOut(element) {
-      element.style.transition = "opacity 0.4s ease-in-out";
-      element.style.opacity = 0;
-      setTimeout(() => element.classList.add("hidden"), 500);
+    function fadeOut(el) {
+      el.classList.add("hidden");
     }
 
     function handleSubmit(e, type) {
       e.preventDefault();
-      alert(`Form ${type === 'baru' ? 'Perjanjian Baru' : 'Addendum'} berhasil dikirim!`);
+      alert(`Form ${type === "baru" ? "Perjanjian Baru" : "Addendum"} berhasil dikirim!`);
       backToMenu();
     }
   </script>
