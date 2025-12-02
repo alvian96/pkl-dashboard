@@ -1,0 +1,117 @@
+/* ============================
+   ASDP PKL Dashboard v2.0
+   Custom Styling
+   ============================ */
+
+/* ===== Global ===== */
+body {
+  scroll-behavior: smooth;
+}
+
+/* ===== Input Field ===== */
+.input-field {
+  @apply border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 outline-none w-full text-gray-800;
+}
+
+.input-field::placeholder {
+  text-transform: none;
+  color: #9ca3af;
+}
+
+/* ===== File Input ===== */
+.file-input {
+  @apply block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400;
+}
+
+/* ===== Button General ===== */
+button {
+  transition: all 0.2s ease-in-out;
+}
+
+/* ===== Card Hover ===== */
+.card-hover {
+  transform: scale(1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.card-hover:hover {
+  transform: scale(1.03);
+}
+
+/* ===== Scrollbar Styling ===== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #a1a1aa;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #71717a;
+}
+
+/* ===== Section Headings ===== */
+section h2 {
+  @apply text-2xl font-bold mb-3;
+}
+
+/* ===== Section Form Wrappers ===== */
+form {
+  @apply bg-white shadow-lg rounded-2xl p-8 mb-6;
+}
+
+/* ===== Labels ===== */
+label {
+  @apply text-sm font-medium text-gray-700;
+}
+
+/* ===== Color Accents ===== */
+.text-green-700 {
+  color: #15803d;
+}
+
+.text-yellow-600 {
+  color: #ca8a04;
+}
+
+/* ===== Buttons ===== */
+.bg-green-700 {
+  background-color: #15803d;
+}
+.bg-green-700:hover {
+  background-color: #166534;
+}
+
+.bg-yellow-500 {
+  background-color: #eab308;
+}
+.bg-yellow-500:hover {
+  background-color: #ca8a04;
+}
+
+/* ===== Footer ===== */
+footer {
+  background: linear-gradient(to right, #1e3a8a, #3b82f6);
+  color: white;
+  font-size: 0.85rem;
+}
+
+/* ===== Mobile Responsiveness ===== */
+@media (max-width: 768px) {
+  nav h1 {
+    font-size: 1rem;
+  }
+  .input-field {
+    font-size: 0.9rem;
+  }
+  footer {
+    font-size: 0.75rem;
+  }
+}
+
+/* ===== Uppercase Enforcement ===== */
+input[type="text"],
+input[type="search"],
+textarea {
+  text-transform: uppercase;
+}
