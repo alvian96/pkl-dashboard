@@ -1,128 +1,109 @@
 /* ==========================================================
-   ASDP PKL Dashboard v3.0 - Animated Corporate Theme
    PT ASDP Indonesia Ferry (Persero)
+   Dashboard Kontrak Laut 2025
+   Corporate UI v4.0 — Clean, Responsive & Professional
    ========================================================== */
 
-/* ===== Global Base ===== */
+/* ===== GLOBAL ===== */
 body {
-  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
   background-color: #f9fafb;
   color: #1f2937;
-  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
   position: relative;
   min-height: 100vh;
   overflow-x: hidden;
-  animation: fadeBody 0.8s ease-in-out;
 }
 
-/* ===== Body Fade-In Animation ===== */
-@keyframes fadeBody {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ===== WATERMARK BACKGROUND (Animated) ===== */
+/* ===== WATERMARK (fixed in background, semi transparent) ===== */
 body::before {
   content: "";
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 800px;
-  height: 800px;
-  background-image: url('ASDP_logo_2023.svg.png');
-  background-repeat: no-repeat;
-  background-position: center;
+  width: 700px;
+  height: 700px;
+  background: url("ASDP_logo_2023.svg.png") no-repeat center center;
   background-size: contain;
-  opacity: 0.04;
-  transform: translate(-50%, -50%) scale(1);
-  z-index: -1;
+  opacity: 0.05;
+  transform: translate(-50%, -50%);
+  z-index: 0;
   pointer-events: none;
-  animation: watermarkFade 3s ease-in-out;
 }
 
-@keyframes watermarkFade {
-  0% { opacity: 0; transform: translate(-50%, -50%) scale(1.1); }
-  100% { opacity: 0.06; transform: translate(-50%, -50%) scale(1); }
-}
-
-/* ==========================================================
-   HEADER REDESIGN - ASDP CORPORATE STYLE
-   ========================================================== */
+/* ===== HEADER ===== */
 .header-gradient {
   background: linear-gradient(90deg, #7bc043 0%, #00b3a4 50%, #0070ba 100%);
+  color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   position: sticky;
   top: 0;
-  z-index: 50;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-  animation: fadeHeader 0.8s ease-in-out;
+  z-index: 10;
 }
 
-@keyframes fadeHeader {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Logo Box */
 .header-gradient .logo-box {
   background: white;
   border-radius: 10px;
   padding: 0.4rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-/* Logo Hover */
 .header-gradient img {
-  transition: transform 0.25s ease-in-out;
-}
-.header-gradient img:hover {
-  transform: scale(1.05);
-}
-
-/* Divider Line Under Header */
-.header-gradient::after {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, rgba(255,255,255,0.4), rgba(255,255,255,0));
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
 }
 
-/* Header Typography */
 .header-gradient h1 {
+  font-size: 1.5rem;
   font-weight: 700;
-  color: white;
-  letter-spacing: 0.3px;
+  margin: 0;
 }
+
 .header-gradient p {
-  color: rgba(255, 255, 255, 0.85);
   font-size: 0.9rem;
+  margin: 0;
+  opacity: 0.9;
 }
 
-/* ==========================================================
-   MAIN MENU DASHBOARD
-   ========================================================== */
+/* ===== MAIN MENU ===== */
+#main-menu {
+  position: relative;
+  z-index: 1;
+  padding: 4rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+#main-menu .grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
 #main-menu .grid > div {
-  border-radius: 18px;
-  box-shadow: 0 8px 14px rgba(0,0,0,0.15);
-  font-weight: 600;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border-radius: 16px;
+  color: white;
+  padding: 3rem 2rem;
   text-align: center;
-  opacity: 0;
-  animation: cardFade 1s ease forwards;
-}
-
-#main-menu .grid > div:nth-child(1) { animation-delay: 0.3s; }
-#main-menu .grid > div:nth-child(2) { animation-delay: 0.6s; }
-
-@keyframes cardFade {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
 }
 
 #main-menu .grid > div:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 22px rgba(0,0,0,0.25);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.25);
 }
 
 #main-menu .grid > div:nth-child(1) {
@@ -133,100 +114,110 @@ body::before {
   background: linear-gradient(135deg, #f5c400, #eab308);
 }
 
-/* ==========================================================
-   FORM SECTION STYLING
-   ========================================================== */
-section h2 {
-  font-weight: 700;
-  font-size: 1.5rem;
-  margin-bottom: 0.75rem;
-  background: linear-gradient(90deg, #7bc043 0%, #00b3a4 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: fadeInTitle 0.8s ease-in-out;
-}
-
-@keyframes fadeInTitle {
-  from { opacity: 0; transform: translateX(-10px); }
-  to { opacity: 1; transform: translateX(0); }
+/* ===== FORM SECTION ===== */
+section {
+  position: relative;
+  z-index: 1;
+  padding: 3rem 1rem;
+  animation: fadeIn 0.8s ease-in-out;
 }
 
 form {
   background: white;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
   border-radius: 1rem;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
   padding: 2rem;
-  margin-bottom: 2rem;
+  max-width: 700px;
+  margin: 0 auto;
   border-top: 5px solid #00b3a4;
-  animation: fadeForm 1s ease forwards;
 }
 
-@keyframes fadeForm {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+form h2 {
+  margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, #7bc043 0%, #00b3a4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* Label & Inputs */
 label {
-  font-size: 0.85rem;
-  font-weight: 500;
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
   color: #374151;
 }
 
-/* File Input */
+.input-field,
 .file-input {
-  border: 1.5px solid #00b3a4;
-  background-color: #f9fafb;
-  color: #333;
-  border-radius: 8px;
-  transition: 0.2s ease-in-out;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  outline: none;
+  transition: all 0.2s ease;
+  margin-bottom: 1.2rem;
 }
 
-.file-input:hover {
-  border-color: #0070ba;
+.input-field:focus,
+.file-input:focus {
+  border-color: #00b3a4;
+  box-shadow: 0 0 0 3px rgba(0, 179, 164, 0.2);
 }
 
-/* Submit Buttons */
-button[type="submit"] {
-  font-weight: 700;
-  letter-spacing: 0.4px;
+button {
+  font-weight: 600;
   border: none;
-  text-transform: uppercase;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  transition: all 0.25s ease;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0.6rem 1.5rem;
+  border-radius: 0.5rem;
 }
 
-button[type="submit"]:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.25);
+button:hover {
+  transform: translateY(-2px);
 }
 
-/* ==========================================================
-   FOOTER
-   ========================================================== */
+.bg-green-600 {
+  background-color: #16a34a;
+  color: white;
+}
+.bg-green-600:hover {
+  background-color: #15803d;
+}
+
+.bg-yellow-500 {
+  background-color: #eab308;
+  color: white;
+}
+.bg-yellow-500:hover {
+  background-color: #ca8a04;
+}
+
+.bg-gray-300 {
+  background-color: #d1d5db;
+}
+.bg-gray-300:hover {
+  background-color: #9ca3af;
+}
+
+/* ===== FOOTER ===== */
 footer {
   background: linear-gradient(90deg, #00b3a4 0%, #0070ba 100%);
   color: white;
   text-align: center;
   padding: 1rem;
-  font-size: 0.85rem;
-  letter-spacing: 0.3px;
-  box-shadow: 0 -2px 8px rgba(0,0,0,0.25);
-  z-index: 10;
+  font-size: 0.9rem;
+  margin-top: 3rem;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.25);
   position: relative;
-  animation: fadeFooter 1s ease-in-out;
+  z-index: 5;
 }
 
-@keyframes fadeFooter {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ==========================================================
-   UPPERCASE ENFORCEMENT
-   ========================================================== */
-input[type="text"],
-input[type="search"],
-textarea {
-  text-transform: uppercase;
-}
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
