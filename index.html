@@ -3,126 +3,80 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ASDP Dashboard | Laporan Kontrak Laut 2025</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>PT ASDP Indonesia Ferry (Persero) | Laporan Kontrak Laut 2025</title>
+  <link rel="stylesheet" href="style.css?v=6" />
   <link rel="icon" href="ASDP_logo_2023.svg.png" />
-  <style>
-    /* Fade Animations (inline for safety on GitHub Pages cache) */
-    .fade {
-      transition: opacity 0.6s ease-in-out;
-      opacity: 1;
-    }
-    .fade.hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-  </style>
 </head>
 
 <body>
   <!-- ===== HEADER ===== -->
   <nav class="header-gradient">
-    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center space-x-4 md:space-x-6">
-      <div class="logo-box">
-        <img src="ASDP_logo_2023.svg.png" alt="Logo ASDP" class="w-12 h-12 object-contain" />
-      </div>
-      <div>
-        <h1 class="text-2xl font-bold text-white tracking-tight leading-tight">
-          PT ASDP Indonesia Ferry (Persero)
-        </h1>
-        <p class="text-sm text-white/90 tracking-wide">
-          Laporan Kontrak Laut 2025
-        </p>
-      </div>
+    <div class="logo-box">
+      <img src="ASDP_logo_2023.svg.png" alt="Logo ASDP" />
+    </div>
+    <div>
+      <h1>PT ASDP Indonesia Ferry (Persero)</h1>
+      <p>Laporan Kontrak Laut 2025</p>
     </div>
   </nav>
 
-  <!-- ===== MAIN MENU ===== -->
-  <main id="main-menu" class="fade">
-    <div class="flex justify-center items-center min-h-[70vh]">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
-        <!-- CARD 1 -->
-        <div
-          class="cursor-pointer px-12 py-10 text-white rounded-lg transition-all hover:scale-105"
-          onclick="showForm('baru')"
-        >
-          <h2 class="text-2xl font-bold mb-2">PERJANJIAN KARYAWAN LAUT BARU</h2>
-          <p>Klik di sini untuk mengisi form perjanjian baru.</p>
-        </div>
-
-        <!-- CARD 2 -->
-        <div
-          class="cursor-pointer px-12 py-10 text-white rounded-lg transition-all hover:scale-105"
-          onclick="showForm('addendum')"
-        >
-          <h2 class="text-2xl font-bold mb-2">PERPANJANGAN / ADDENDUM</h2>
-          <p>Klik di sini untuk mengisi form perpanjangan atau addendum.</p>
-        </div>
+  <!-- ===== MENU ===== -->
+  <main id="main-menu">
+    <div class="grid">
+      <div onclick="showForm('baru')">
+        <h2>PERJANJIAN KARYAWAN LAUT BARU</h2>
+        <p>Klik di sini untuk mengisi form perjanjian baru.</p>
+      </div>
+      <div onclick="showForm('addendum')">
+        <h2>PERPANJANGAN / ADDENDUM</h2>
+        <p>Klik di sini untuk mengisi form perpanjangan atau addendum.</p>
       </div>
     </div>
   </main>
 
-  <!-- ===== FORM: PERJANJIAN BARU ===== -->
-  <section id="form-baru" class="hidden fade">
-    <div class="max-w-4xl mx-auto p-6">
-      <h2>Form Perjanjian Karyawan Laut Baru</h2>
-      <form id="formPerjanjianBaru" onsubmit="handleSubmit(event, 'baru')">
-        <div class="mb-4">
-          <label for="nik">NIK</label>
-          <input type="text" id="nik" name="nik" class="input-field" required />
-        </div>
-        <div class="mb-4">
-          <label for="nama">Nama Lengkap</label>
-          <input type="text" id="nama" name="nama" class="input-field" required />
-        </div>
-        <div class="mb-4">
-          <label for="file">Upload Dokumen Kontrak</label>
-          <input type="file" id="file" name="file" class="file-input" required />
-        </div>
-        <div class="mt-6 flex gap-3">
-          <button type="submit" class="bg-green-600 hover:bg-green-700 text-white py-2 px-6 rounded-lg">
-            Kirim
-          </button>
-          <button type="button" onclick="backToMenu()" class="bg-gray-300 hover:bg-gray-400 py-2 px-6 rounded-lg">
-            Kembali
-          </button>
-        </div>
-      </form>
-    </div>
+  <!-- ===== FORM BARU ===== -->
+  <section id="form-baru" class="hidden">
+    <h2>Form Perjanjian Karyawan Laut Baru</h2>
+    <form id="formPerjanjianBaru" onsubmit="handleSubmit(event, 'baru')">
+      <label for="nik">NIK</label>
+      <input type="text" id="nik" name="nik" class="input-field" required />
+
+      <label for="nama">Nama Lengkap</label>
+      <input type="text" id="nama" name="nama" class="input-field" required />
+
+      <label for="file">Upload Dokumen Kontrak</label>
+      <input type="file" id="file" name="file" class="file-input" required />
+
+      <div style="margin-top: 1rem; display: flex; gap: 10px;">
+        <button type="submit" class="bg-green-600">Kirim</button>
+        <button type="button" class="bg-gray-300" onclick="backToMenu()">Kembali</button>
+      </div>
+    </form>
   </section>
 
-  <!-- ===== FORM: ADDENDUM ===== -->
-  <section id="form-addendum" class="hidden fade">
-    <div class="max-w-4xl mx-auto p-6">
-      <h2>Form Perpanjangan / Addendum</h2>
-      <form id="formAddendum" onsubmit="handleSubmit(event, 'addendum')">
-        <div class="mb-4">
-          <label for="nik-add">NIK</label>
-          <input type="text" id="nik-add" name="nik" class="input-field" required />
-        </div>
-        <div class="mb-4">
-          <label for="nama-add">Nama Lengkap</label>
-          <input type="text" id="nama-add" name="nama" class="input-field" required />
-        </div>
-        <div class="mb-4">
-          <label for="file-add">Upload Dokumen Addendum</label>
-          <input type="file" id="file-add" name="file" class="file-input" required />
-        </div>
-        <div class="mt-6 flex gap-3">
-          <button type="submit" class="bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-6 rounded-lg">
-            Kirim
-          </button>
-          <button type="button" onclick="backToMenu()" class="bg-gray-300 hover:bg-gray-400 py-2 px-6 rounded-lg">
-            Kembali
-          </button>
-        </div>
-      </form>
-    </div>
+  <!-- ===== FORM ADDENDUM ===== -->
+  <section id="form-addendum" class="hidden">
+    <h2>Form Perpanjangan / Addendum</h2>
+    <form id="formAddendum" onsubmit="handleSubmit(event, 'addendum')">
+      <label for="nik-add">NIK</label>
+      <input type="text" id="nik-add" name="nik" class="input-field" required />
+
+      <label for="nama-add">Nama Lengkap</label>
+      <input type="text" id="nama-add" name="nama" class="input-field" required />
+
+      <label for="file-add">Upload Dokumen Addendum</label>
+      <input type="file" id="file-add" name="file" class="file-input" required />
+
+      <div style="margin-top: 1rem; display: flex; gap: 10px;">
+        <button type="submit" class="bg-yellow-500">Kirim</button>
+        <button type="button" class="bg-gray-300" onclick="backToMenu()">Kembali</button>
+      </div>
+    </form>
   </section>
 
   <!-- ===== FOOTER ===== -->
   <footer>
-    © 2025 PT ASDP Indonesia Ferry (Persero) — Laporan Kontrak Laut System v3.3
+    © 2025 PT ASDP Indonesia Ferry (Persero) — Laporan Kontrak Laut System v4.0
   </footer>
 
   <!-- ===== SCRIPT ===== -->
@@ -132,37 +86,42 @@
     const formAdd = document.getElementById("form-addendum");
 
     function showForm(type) {
-      fadeOut(menu);
-      setTimeout(() => {
-        if (type === "baru") {
-          formAdd.classList.add("hidden");
-          fadeIn(formBaru);
-        } else {
-          formBaru.classList.add("hidden");
-          fadeIn(formAdd);
-        }
-      }, 500);
+      menu.style.display = "none";
+      if (type === "baru") {
+        formAdd.classList.add("hidden");
+        fadeIn(formBaru);
+      } else {
+        formBaru.classList.add("hidden");
+        fadeIn(formAdd);
+      }
     }
 
     function backToMenu() {
       fadeOut(formBaru);
       fadeOut(formAdd);
-      setTimeout(() => fadeIn(menu), 500);
+      setTimeout(() => (menu.style.display = "flex"), 400);
     }
 
     function fadeIn(el) {
       el.classList.remove("hidden");
-      setTimeout(() => el.classList.remove("hidden"), 10);
-      el.classList.add("fade");
+      el.style.opacity = 0;
+      setTimeout(() => {
+        el.style.transition = "opacity 0.6s ease-in-out";
+        el.style.opacity = 1;
+      }, 10);
     }
 
     function fadeOut(el) {
-      el.classList.add("hidden");
+      el.style.transition = "opacity 0.3s ease-in-out";
+      el.style.opacity = 0;
+      setTimeout(() => el.classList.add("hidden"), 300);
     }
 
     function handleSubmit(e, type) {
       e.preventDefault();
-      alert(`Form ${type === "baru" ? "Perjanjian Baru" : "Addendum"} berhasil dikirim!`);
+      alert(
+        `Form ${type === "baru" ? "Perjanjian Baru" : "Addendum"} berhasil dikirim!`
+      );
       backToMenu();
     }
   </script>
