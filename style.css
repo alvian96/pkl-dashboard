@@ -1,115 +1,230 @@
-/* ============================
-   ASDP PKL Dashboard v2.0
-   Custom Styling
-   ============================ */
+/* ==========================================================
+   ASDP PKL Dashboard v3.0 - Animated Corporate Theme
+   PT ASDP Indonesia Ferry (Persero)
+   ========================================================== */
 
-/* ===== Global ===== */
+/* ===== Global Base ===== */
 body {
+  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+  background-color: #f9fafb;
+  color: #1f2937;
   scroll-behavior: smooth;
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  animation: fadeBody 0.8s ease-in-out;
 }
 
-/* ===== Input Field ===== */
-.input-field {
-  @apply border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 outline-none w-full text-gray-800;
+/* ===== Body Fade-In Animation ===== */
+@keyframes fadeBody {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.input-field::placeholder {
-  text-transform: none;
-  color: #9ca3af;
+/* ===== WATERMARK BACKGROUND (Animated) ===== */
+body::before {
+  content: "";
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 800px;
+  height: 800px;
+  background-image: url('ASDP_logo_2023.svg.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.04;
+  transform: translate(-50%, -50%) scale(1);
+  z-index: -1;
+  pointer-events: none;
+  animation: watermarkFade 3s ease-in-out;
 }
 
-/* ===== File Input ===== */
-.file-input {
-  @apply block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400;
+@keyframes watermarkFade {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(1.1); }
+  100% { opacity: 0.06; transform: translate(-50%, -50%) scale(1); }
 }
 
-/* ===== Button General ===== */
-button {
-  transition: all 0.2s ease-in-out;
+/* ==========================================================
+   HEADER REDESIGN - ASDP CORPORATE STYLE
+   ========================================================== */
+.header-gradient {
+  background: linear-gradient(90deg, #7bc043 0%, #00b3a4 50%, #0070ba 100%);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  animation: fadeHeader 0.8s ease-in-out;
 }
 
-/* ===== Card Hover ===== */
-.card-hover {
-  transform: scale(1);
-  transition: transform 0.2s ease-in-out;
+@keyframes fadeHeader {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.card-hover:hover {
-  transform: scale(1.03);
-}
-
-/* ===== Scrollbar Styling ===== */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-thumb {
-  background-color: #a1a1aa;
+/* Logo Box */
+.header-gradient .logo-box {
+  background: white;
   border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background-color: #71717a;
-}
-
-/* ===== Section Headings ===== */
-section h2 {
-  @apply text-2xl font-bold mb-3;
+  padding: 0.4rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-/* ===== Section Form Wrappers ===== */
-form {
-  @apply bg-white shadow-lg rounded-2xl p-8 mb-6;
+/* Logo Hover */
+.header-gradient img {
+  transition: transform 0.25s ease-in-out;
+}
+.header-gradient img:hover {
+  transform: scale(1.05);
 }
 
-/* ===== Labels ===== */
-label {
-  @apply text-sm font-medium text-gray-700;
+/* Divider Line Under Header */
+.header-gradient::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.4), rgba(255,255,255,0));
 }
 
-/* ===== Color Accents ===== */
-.text-green-700 {
-  color: #15803d;
-}
-
-.text-yellow-600 {
-  color: #ca8a04;
-}
-
-/* ===== Buttons ===== */
-.bg-green-700 {
-  background-color: #15803d;
-}
-.bg-green-700:hover {
-  background-color: #166534;
-}
-
-.bg-yellow-500 {
-  background-color: #eab308;
-}
-.bg-yellow-500:hover {
-  background-color: #ca8a04;
-}
-
-/* ===== Footer ===== */
-footer {
-  background: linear-gradient(to right, #1e3a8a, #3b82f6);
+/* Header Typography */
+.header-gradient h1 {
+  font-weight: 700;
   color: white;
+  letter-spacing: 0.3px;
+}
+.header-gradient p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+}
+
+/* ==========================================================
+   MAIN MENU DASHBOARD
+   ========================================================== */
+#main-menu .grid > div {
+  border-radius: 18px;
+  box-shadow: 0 8px 14px rgba(0,0,0,0.15);
+  font-weight: 600;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  text-align: center;
+  opacity: 0;
+  animation: cardFade 1s ease forwards;
+}
+
+#main-menu .grid > div:nth-child(1) { animation-delay: 0.3s; }
+#main-menu .grid > div:nth-child(2) { animation-delay: 0.6s; }
+
+@keyframes cardFade {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#main-menu .grid > div:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 22px rgba(0,0,0,0.25);
+}
+
+#main-menu .grid > div:nth-child(1) {
+  background: linear-gradient(135deg, #7bc043, #00b3a4);
+}
+
+#main-menu .grid > div:nth-child(2) {
+  background: linear-gradient(135deg, #f5c400, #eab308);
+}
+
+/* ==========================================================
+   FORM SECTION STYLING
+   ========================================================== */
+section h2 {
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(90deg, #7bc043 0%, #00b3a4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeInTitle 0.8s ease-in-out;
+}
+
+@keyframes fadeInTitle {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+form {
+  background: white;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-top: 5px solid #00b3a4;
+  animation: fadeForm 1s ease forwards;
+}
+
+@keyframes fadeForm {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Label & Inputs */
+label {
   font-size: 0.85rem;
+  font-weight: 500;
+  color: #374151;
 }
 
-/* ===== Mobile Responsiveness ===== */
-@media (max-width: 768px) {
-  nav h1 {
-    font-size: 1rem;
-  }
-  .input-field {
-    font-size: 0.9rem;
-  }
-  footer {
-    font-size: 0.75rem;
-  }
+/* File Input */
+.file-input {
+  border: 1.5px solid #00b3a4;
+  background-color: #f9fafb;
+  color: #333;
+  border-radius: 8px;
+  transition: 0.2s ease-in-out;
 }
 
-/* ===== Uppercase Enforcement ===== */
+.file-input:hover {
+  border-color: #0070ba;
+}
+
+/* Submit Buttons */
+button[type="submit"] {
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  border: none;
+  text-transform: uppercase;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.25s ease;
+}
+
+button[type="submit"]:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.25);
+}
+
+/* ==========================================================
+   FOOTER
+   ========================================================== */
+footer {
+  background: linear-gradient(90deg, #00b3a4 0%, #0070ba 100%);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.3px;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.25);
+  z-index: 10;
+  position: relative;
+  animation: fadeFooter 1s ease-in-out;
+}
+
+@keyframes fadeFooter {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================
+   UPPERCASE ENFORCEMENT
+   ========================================================== */
 input[type="text"],
 input[type="search"],
 textarea {
